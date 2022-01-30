@@ -1,24 +1,30 @@
 {
-  "name": "nodeexpress",
+  "name": "cs-outbound-api-mern",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "cs-outbound-api-mern",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "body-parser": "^1.19.1",
+    "mongodb": "^4.3.1",
+    "mongoose": "^6.1.6",
+    "winston": "^3.5.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pankajrajputiet/nodeexpress.git"
+    "url": "git+https://github.com/storagecold/cs-outbound-api-mern.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pankajrajputiet/nodeexpress/issues"
+    "url": "https://github.com/storagecold/cs-outbound-api-mern/issues"
   },
-  "homepage": "https://github.com/pankajrajputiet/nodeexpress#readme",
-  "dependencies": {
-    "express": "^4.17.2",
-    "mongoose": "^6.1.8",
-    "nodemon": "^2.0.15"
-  }
+  "homepage": "https://github.com/storagecold/cs-outbound-api-mern#readme"
 }

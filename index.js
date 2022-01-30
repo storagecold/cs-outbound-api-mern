@@ -1,17 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+const constants = require("./src/utils/constants");
+const amadRouter = require("./src/routes/amadRouter");
+const port = constants.PORT;
 
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-);
-app.get('/', (req, res) => {
-    res.json({ 'message': 'ok' });
-})
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.listen(port, () => {
+  console.log(`app is listing at http://localhost:${port}`);
 });
+
+app.use("/amad", amadRouter);
