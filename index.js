@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const amadController = require("./src/controller/amadController");
 const constants = require("./src/utils/constants");
 const amadRouter = require("./src/routes/amadRouter");
 const coldInfoRouter = require("./src/routes/coldInfoRouter");
@@ -9,5 +10,5 @@ app.listen(port, () => {
   console.log(`app is listing at http://localhost:${port}`);
 });
 
-app.use("/amad", amadRouter);
-app.use("/coldInfo", coldInfoRouter);
+app.use("/amad", amadController);
+app.use("/coldInfo",amadRouter );
