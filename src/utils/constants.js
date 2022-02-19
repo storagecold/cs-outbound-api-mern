@@ -9,6 +9,8 @@ const AMAD_NO = "amadNo";
 const PARTY = "party";
 const VILLAGE = "village";
 const YEAR = "year";
+const PAGE = "page";
+const LIMIT = "limit";
 
 module.exports = {
   URL_CS_DEV,
@@ -22,4 +24,6 @@ module.exports = {
   PARTY,
   VILLAGE,
   YEAR,
+  PAGE,
+  LIMIT,
 };

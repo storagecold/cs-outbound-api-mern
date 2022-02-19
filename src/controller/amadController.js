@@ -3,16 +3,18 @@ const mongoose = require("mongoose");
 const config = require("./../config/config");
 const amadService = require("./../services/amadService");
 const logger = config.logger;
-mongoose.connect(config.DB_URL, () => console.log("connected to DB"));
+mongoose.connect(config.DB_URL);
 
 const amadController = express.Router();
 
 //getAllAmad
 amadController.get("/", async (req, res) => {
   try {
-    const amads = await amadService.getAmads();
-    if (amads.length > 0) {
-      res.status(200).send(amads);
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const results = await amadService.getAmads(req.query, page, limit);
+    if (results.amadResults.length > 0) {
+      res.status(200).send(results);
     } else {
       res.status(404).send("No Record found");
     }
@@ -24,9 +26,9 @@ amadController.get("/", async (req, res) => {
 });
 
 //getAmad
-amadController.get("/amadNo/:amadNo", async (req, res) => {
+amadController.get("/amadNo", async (req, res) => {
   try {
-    const amadNo = req.params.amadNo;
+    const amadNo = parseInt(req.query.amadNo);
     const amad = await amadService.getAmadByAmadNo(amadNo);
     if (amad.length > 0) {
       res.status(200).send(amad);
@@ -41,12 +43,14 @@ amadController.get("/amadNo/:amadNo", async (req, res) => {
 });
 
 //getAmad by Party Name
-amadController.get("/party/:party", async (req, res) => {
+amadController.get("/party", async (req, res) => {
   try {
-    const partyName = req.params.party;
-    const amad = await amadService.getAmadByPartyName(partyName);
-    if (amad.length > 0) {
-      res.status(200).send(amad);
+    const party = req.query.party;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const results = await amadService.getAmadByParty(party, page, limit);
+    if (results.amadResults.length > 0) {
+      res.status(200).send(results);
     } else {
       res.status(404).send(`No Record found for party: ${partyName}`);
     }
@@ -58,12 +62,14 @@ amadController.get("/party/:party", async (req, res) => {
 });
 
 //getAmad by village Name
-amadController.get("/village/:village", async (req, res) => {
+amadController.get("/village", async (req, res) => {
   try {
-    const villageName = req.params.village;
-    const amads = await amadService.getAmadByVillageName(villageName);
-    if (amads.length > 0) {
-      res.status(200).send(amads);
+    const village = req.query.village;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const results = await amadService.getAmadByVillage(village, page, limit);
+    if (results.amadResults.length > 0) {
+      res.status(200).send(results);
     } else {
       res.status(404).send(`No Record found for village: ${villageName}`);
     }
@@ -75,12 +81,14 @@ amadController.get("/village/:village", async (req, res) => {
 });
 
 //getAmad by year
-amadController.get("/year/:year", async (req, res) => {
+amadController.get("/year", async (req, res) => {
   try {
-    const year = req.params.year;
-    const amads = await amadService.getAmadByYear(year);
-    if (amads.length > 0) {
-      res.status(200).send(amads);
+    const year = req.query.year;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const results = await amadService.getAmadByYear(year, page, limit);
+    if (results.amadResults.length > 0) {
+      res.status(200).send(results);
     } else {
       res.status(404).send(`No Record found for year: ${year}`);
     }
@@ -92,12 +100,14 @@ amadController.get("/year/:year", async (req, res) => {
 });
 
 //getAmad by coldId
-amadController.get("/coldId/:coldId", async (req, res) => {
+amadController.get("/coldId", async (req, res) => {
   try {
-    const coldId = req.params.coldId;
-    const amads = await amadService.getAmadByColdId(coldId);
-    if (amads.length > 0) {
-      res.status(200).send(amads);
+    const coldId = req.query.coldId;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const results = await amadService.getAmadByColdId(coldId, page, limit);
+    if (results.amadResults.length > 0) {
+      res.status(200).send(results);
     } else {
       res.status(404).send(`No Record found for coldId: ${coldId}`);
     }
