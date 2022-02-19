@@ -4,6 +4,11 @@ const CS_DEV = "CS_DEV";
 const COLD_INFO = "coldInfo";
 const AMAD = "amad";
 const PORT = 3000;
+const COLD_ID = "coldId";
+const AMAD_NO = "amadNo";
+const PARTY = "party";
+const VILLAGE = "village";
+const YEAR = "year";
 
 module.exports = {
   URL_CS_DEV,
@@ -12,4 +17,9 @@ module.exports = {
   COLD_INFO,
   AMAD,
   PORT,
+  COLD_ID,
+  AMAD_NO,
+  PARTY,
+  VILLAGE,
+  YEAR,
 };

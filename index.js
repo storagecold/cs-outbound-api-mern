@@ -10,5 +10,5 @@ app.listen(port, () => {
   console.log(`app is listing at http://localhost:${port}`);
 });
 
-app.use("/amad", amadController);
+app.use("/cs/outbound/api/amads", amadController);
 app.use("/coldInfo",amadRouter );
